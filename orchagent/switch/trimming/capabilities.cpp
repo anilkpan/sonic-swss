@@ -167,8 +167,9 @@ bool SwitchTrimmingCapabilities::isSwitchTrimmingSupported() const
     {
         queueIndex = trimCap.queue.index.isAttrSupported;
     }
-
-    return size && dscpMode && dscp && tc && queueMode && queueIndex;
+    
+    // dscpMode and queueMode capabilities are not mandatory
+    return size && dscp && tc && queueIndex;
 }
 
 bool SwitchTrimmingCapabilities::validateTrimDscpModeCap(sai_packet_trim_dscp_resolution_mode_t value) const
